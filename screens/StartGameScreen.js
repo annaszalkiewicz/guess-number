@@ -4,8 +4,8 @@ import Card from "../components/ui/Card";
 
 const StartGameScreen = () => {
   return (
-    <View>
-      <Text>Start new game</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Start new game</Text>
       <Card style={styles.card}>
         <Text>Select a number</Text>
         <TextInput />
@@ -19,6 +19,15 @@ const StartGameScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 30,
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
   card: {
     width: 300,
     maxWidth: '80%'
