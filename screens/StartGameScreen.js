@@ -1,23 +1,48 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Button,
+  TouchableWithoutFeedback,
+  Keyboard
+} from "react-native";
 import Card from "../components/ui/Card";
-import variables from '../constants/variables';
+import variables from "../constants/variables";
 
 const StartGameScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Start new game</Text>
-      <Card style={styles.card}>
-        <Text style={styles.text}>Select a number</Text>
-        <View style={styles.inputContainer}>
-          <TextInput keyboardType="numeric" style={styles.input} />
-        </View>
-        <View style={styles.buttonsContainer}>
-          <Button title="Reset" color={variables.secondaryColor} />
-          <Button title="Confirm" color={variables.primaryColor} />
-        </View>
-      </Card>
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Start new game</Text>
+        <Card style={styles.card}>
+          <Text style={styles.text}>Select a number</Text>
+          <View style={styles.inputContainer}>
+            <TextInput
+              keyboardType="number-pad"
+              style={styles.input}
+              maxLength={2}
+              autoCapitalize="none"
+              autoCorrect={false}
+              blurOnSubmit
+            />
+          </View>
+          <View style={styles.buttonsContainer}>
+            <Button
+              title="Reset"
+              color={variables.secondaryColor}
+              style={styles.button}
+            />
+            <Button
+              title="Confirm"
+              color={variables.primaryColor}
+              style={styles.button}
+            />
+          </View>
+        </Card>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -32,31 +57,34 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   card: {
-    width: '100%',
+    width: "100%",
     maxWidth: 320,
     marginTop: 30
   },
   text: {
-    textAlign: 'center'
+    textAlign: "center"
   },
   inputContainer: {
-    width: '100%',
+    width: "100%",
     marginVertical: 10,
-    alignItems: 'center'
+    alignItems: "center"
   },
   input: {
     width: 100,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 24,
-    borderColor: 'rgba(0,0,0,0.5)',
-    borderBottomWidth: 2,
-
+    borderColor: "rgba(0,0,0,0.5)",
+    borderBottomWidth: 2
   },
   buttonsContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginTop: 10
+  },
+  button: {
+    width: 100
   }
 });
 
