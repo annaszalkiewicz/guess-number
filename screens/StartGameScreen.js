@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Card from "../components/ui/Card";
 import variables from "../constants/variables";
+import Input from "../components/ui/Input";
 
 const StartGameScreen = () => {
 
@@ -26,7 +27,7 @@ const StartGameScreen = () => {
         <Card style={styles.card}>
           <Text style={styles.text}>Select a number</Text>
           <View style={styles.inputContainer}>
-            <TextInput
+            <Input
               keyboardType="number-pad"
               style={styles.input}
               maxLength={2}
@@ -81,9 +82,7 @@ const styles = StyleSheet.create({
   input: {
     width: 100,
     textAlign: "center",
-    fontSize: 24,
-    borderColor: "rgba(0,0,0,0.5)",
-    borderBottomWidth: 2
+    fontSize: 24
   },
   buttonsContainer: {
     width: "100%",
