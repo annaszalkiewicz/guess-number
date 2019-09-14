@@ -8,9 +8,9 @@ const StartGameScreen = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Start new game</Text>
       <Card style={styles.card}>
-        <Text>Select a number</Text>
-        <View style={styles.input}>
-          <TextInput />
+        <Text style={styles.text}>Select a number</Text>
+        <View style={styles.inputContainer}>
+          <TextInput keyboardType="numeric" style={styles.input} />
         </View>
         <View style={styles.buttonsContainer}>
           <Button title="Reset" color={variables.secondaryColor} />
@@ -36,11 +36,21 @@ const styles = StyleSheet.create({
     maxWidth: 320,
     marginTop: 30
   },
-  input: {
+  text: {
+    textAlign: 'center'
+  },
+  inputContainer: {
     width: '100%',
-    borderBottomColor: '#000',
+    marginVertical: 10,
+    alignItems: 'center'
+  },
+  input: {
+    width: 100,
+    textAlign: 'center',
+    fontSize: 24,
+    borderColor: 'rgba(0,0,0,0.5)',
     borderBottomWidth: 2,
-    marginVertical: 10
+
   },
   buttonsContainer: {
     width: '100%',
