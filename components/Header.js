@@ -2,10 +2,12 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+import variables from '../constants/variables';
+
 const Header = props => {
   return (
     <LinearGradient 
-      colors={["#00A1C9", "#0BD68F"]}
+      colors={[variables.secondaryColor, variables.primaryColor]}
       start={[0, 0]} 
       end={[1, 1]}
     >
