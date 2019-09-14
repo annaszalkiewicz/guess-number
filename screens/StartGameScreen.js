@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,13 @@ import Card from "../components/ui/Card";
 import variables from "../constants/variables";
 
 const StartGameScreen = () => {
+
+  const [inputValue, setInputValue] = useState('');
+  
+  const changeInputHandler = inputText => {
+    setInputValue(inputText.replace(/[^0-9]/g, ''))
+  }
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
@@ -26,6 +33,8 @@ const StartGameScreen = () => {
               autoCapitalize="none"
               autoCorrect={false}
               blurOnSubmit
+              onChangeText={changeInputHandler}
+              value={inputValue}
             />
           </View>
           <View style={styles.buttonsContainer}>
