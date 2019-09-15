@@ -11,7 +11,7 @@ const NumberContainer = props => {
       <Text>You selected</Text>
       <Text style={styles.number}>{props.selectedNumber}</Text>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => props.startGame(true)}>
         <LinearGradient
           colors={[variables.secondaryColor, variables.primaryColor]}
           start={[0, 0]}

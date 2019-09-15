@@ -14,7 +14,7 @@ import variables from "../constants/variables";
 import Input from "../components/ui/Input";
 import NumberContainer from "../components/NumberContainer";
 
-const StartGameScreen = () => {
+const StartGameScreen = props => {
   const [inputValue, setInputValue] = useState("");
   const [selectedNumber, setSelectedNumber] = useState();
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -94,7 +94,7 @@ const StartGameScreen = () => {
               </View>
             </View>
           </Card>
-          {isConfirmed && <NumberContainer selectedNumber={selectedNumber} />}
+          {isConfirmed && <NumberContainer selectedNumber={selectedNumber} startGame={props.setStartGame} />}
         </View>
 
       </React.Fragment>

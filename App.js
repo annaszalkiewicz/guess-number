@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Header from "./components/Header";
 import StartGameScreen from "./screens/StartGameScreen";
+import GameScreen from "./screens/GameScreen";
 
-export default function App() {
+const App = props => {
+  const [startGame, setStartGame] = useState(false);
+
+  startGameHandler = () => {
+    setStartGame(true);
+  };
+
   return (
     <View style={styles.container}>
       <Header title="Guess a Number" />
-      <StartGameScreen />
+      {!startGame && <StartGameScreen setStartGame={setStartGame} />}
+      {startGame && <GameScreen />}
     </View>
   );
 }
@@ -18,3 +26,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   }
 });
+
+export default App;
