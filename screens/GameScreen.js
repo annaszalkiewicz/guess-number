@@ -27,9 +27,9 @@ const GameScreen = props => {
       <Card style={styles.card}>
         <Text>Opponent's Guess</Text>
         <Number>{currentGuess}</Number>
-        <View>
-          <PrimaryButton>Lower</PrimaryButton>
-          <PrimaryButton>Greater</PrimaryButton>
+        <View style={styles.buttonsContainer}>
+          <PrimaryButton style={styles.button}>Lower</PrimaryButton>
+          <PrimaryButton style={styles.button}>Greater</PrimaryButton>
         </View>
       </Card>
     </View>
@@ -45,6 +45,14 @@ const styles = StyleSheet.create({
   card: {
     width: '100%',
     alignItems: 'center'
+  },
+  buttonsContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: "space-between"
+  },
+  button: {
+    width: 110
   }
 });
 
