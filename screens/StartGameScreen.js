@@ -16,7 +16,6 @@ import NumberContainer from "../components/NumberContainer";
 
 const StartGameScreen = props => {
   const [inputValue, setInputValue] = useState("");
-  const [selectedNumber, setSelectedNumber] = useState();
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
@@ -53,7 +52,7 @@ const StartGameScreen = props => {
   const submitInputHandler = () => {
     let chosenNumber = parseInt(inputValue);
     setIsConfirmed(true);
-    setSelectedNumber(chosenNumber);
+    props.setSelectedNumber(chosenNumber);
     setInputValue("");
     Keyboard.dismiss();
   };
@@ -94,7 +93,7 @@ const StartGameScreen = props => {
               </View>
             </View>
           </Card>
-          {isConfirmed && <NumberContainer selectedNumber={selectedNumber} startGame={props.setStartGame} />}
+          {isConfirmed && <NumberContainer selectedNumber={props.selectedNumber} startGame={props.setStartGame} />}
         </View>
 
       </React.Fragment>

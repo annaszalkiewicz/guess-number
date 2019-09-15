@@ -6,6 +6,7 @@ import GameScreen from "./screens/GameScreen";
 
 const App = props => {
   const [startGame, setStartGame] = useState(false);
+  const [selectedNumber, setSelectedNumber] = useState();
 
   startGameHandler = () => {
     setStartGame(true);
@@ -14,8 +15,8 @@ const App = props => {
   return (
     <View style={styles.container}>
       <Header title="Guess a Number" />
-      {!startGame && <StartGameScreen setStartGame={setStartGame} />}
-      {startGame && <GameScreen />}
+      {!startGame && <StartGameScreen setStartGame={setStartGame} selectedNumber={selectedNumber} setSelectedNumber={setSelectedNumber} />}
+      {startGame && <GameScreen userChoice={selectedNumber} />}
     </View>
   );
 }
