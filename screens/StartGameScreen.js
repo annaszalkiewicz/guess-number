@@ -72,10 +72,15 @@ const StartGameScreen = props => {
               />
             </View>
             <View style={styles.buttonsContainer}>
-              <SecondaryButton onPress={resetInputHandler}>
+              <SecondaryButton
+                onPress={resetInputHandler}
+                style={styles.button}
+              >
                 Reset
               </SecondaryButton>
-              <PrimaryButton onPress={validationHandler}>Confirm</PrimaryButton>
+              <PrimaryButton onPress={validationHandler} style={styles.button}>
+                Confirm
+              </PrimaryButton>
             </View>
           </Card>
           {isConfirmed && (
@@ -126,7 +131,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   button: {
-    width: 100
+    width: 110
   }
 });
 
