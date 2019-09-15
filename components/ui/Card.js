@@ -12,15 +12,16 @@ const Card = props => {
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    shadowColor: "#000",
+    shadowColor: "#c1c1c1",
     shadowOffset: {
       width: 0,
-      height: 1
+      height: 0
     },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 2,
+    elevation: 1,
     borderWidth: 0,
+    borderColor: 'transparent',
     borderRadius: 10
   }
 });
