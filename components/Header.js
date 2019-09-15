@@ -21,15 +21,16 @@ const Header = props => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 150,
-    paddingVertical: 30,
+    paddingTop: 40,
+    paddingBottom: 30,
     alignItems: "center",
     justifyContent: "center"
   },
   title: {
-    fontSize: 36,
+    fontSize: 24,
     color: "#fff",
-    textAlign: 'center'
+    textAlign: 'center',
+    fontWeight: 'bold'
   }
 });
 

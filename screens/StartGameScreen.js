@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: "bold"
   },
   card: {
