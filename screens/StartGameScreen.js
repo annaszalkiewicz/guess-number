@@ -16,6 +16,8 @@ const StartGameScreen = () => {
   const [inputValue, setInputValue] = useState("");
   const [selectedNumber, setSelectedNumber] = useState();
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
 
   const changeInputHandler = inputText => {
     setInputValue(inputText.replace(/[^0-9]/g, ""));
@@ -26,11 +28,23 @@ const StartGameScreen = () => {
     setIsConfirmed(false);
   };
 
+  const validationHandler = () => {
+    let chosenNumber = parseInt(inputValue);
+
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+      setIsTouched(true);
+      setIsValid(false);
+    }
+    setIsTouched(true);
+    setIsValid(true);
+    submitInputHandler();
+  };
+
   const submitInputHandler = () => {
     let chosenNumber = parseInt(inputValue);
     setIsConfirmed(true);
     setSelectedNumber(chosenNumber);
-    setInputValue('');
+    setInputValue("");
   };
 
   return (
@@ -53,18 +67,22 @@ const StartGameScreen = () => {
               />
             </View>
             <View style={styles.buttonsContainer}>
-              <Button
-                title="Reset"
-                color={variables.secondaryColor}
-                style={styles.button}
-                onPress={resetInputHandler}
-              />
-              <Button
-                title="Confirm"
-                color={variables.primaryColor}
-                style={styles.button}
-                onPress={submitInputHandler}
-              />
+              <View style={styles.button}>
+                <Button
+                  title="Reset"
+                  color={variables.secondaryColor}
+                  onPress={resetInputHandler}
+                />
+              </View>
+              <View style={styles.button}>
+                <Button
+                  title="Confirm"
+                  color={variables.primaryColor}
+                  onPress={validationHandler}
+                />
+              </View>
+
+              {isTouched && !isValid && <Text>Input is invalid</Text>}
             </View>
           </Card>
         </View>
@@ -110,7 +128,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   button: {
-    width: 100
+    width: 120
   }
 });
 
