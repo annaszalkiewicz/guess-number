@@ -12,6 +12,7 @@ import {
 import Card from "../components/ui/Card";
 import variables from "../constants/variables";
 import Input from "../components/ui/Input";
+import NumberContainer from "../components/NumberContainer";
 
 const StartGameScreen = () => {
   const [inputValue, setInputValue] = useState("");
@@ -54,6 +55,7 @@ const StartGameScreen = () => {
     setIsConfirmed(true);
     setSelectedNumber(chosenNumber);
     setInputValue("");
+    Keyboard.dismiss();
   };
 
   return (
@@ -91,10 +93,10 @@ const StartGameScreen = () => {
                 />
               </View>
             </View>
+            {isConfirmed && <NumberContainer selectedNumber={selectedNumber} />}
           </Card>
         </View>
 
-        {isConfirmed && <Text>Confirmed number: {selectedNumber}</Text>}
       </React.Fragment>
     </TouchableWithoutFeedback>
   );
