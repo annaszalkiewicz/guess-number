@@ -93,8 +93,8 @@ const StartGameScreen = () => {
                 />
               </View>
             </View>
-            {isConfirmed && <NumberContainer selectedNumber={selectedNumber} />}
           </Card>
+          {isConfirmed && <NumberContainer selectedNumber={selectedNumber} />}
         </View>
 
       </React.Fragment>
