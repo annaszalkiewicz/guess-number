@@ -3,16 +3,15 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
-  Button,
   TouchableWithoutFeedback,
   Keyboard,
   Alert
 } from "react-native";
 import Card from "../components/ui/Card";
-import variables from "../constants/variables";
 import Input from "../components/ui/Input";
 import NumberContainer from "../components/NumberContainer";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import SecondaryButton from "../components/ui/SecondaryButton";
 
 const StartGameScreen = props => {
   const [inputValue, setInputValue] = useState("");
@@ -36,13 +35,9 @@ const StartGameScreen = props => {
 
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       setIsValid(false);
-      Alert.alert(
-        "Input is invalid.", 
-        "Number has to be between 1 and 99.", 
-        [
-          { text: "OK", onPress: resetInputHandler, style: "destructive" }
-        ]
-      );
+      Alert.alert("Input is invalid.", "Number has to be between 1 and 99.", [
+        { text: "OK", onPress: resetInputHandler, style: "destructive" }
+      ]);
     } else {
       setIsValid(true);
       submitInputHandler();
@@ -77,25 +72,19 @@ const StartGameScreen = props => {
               />
             </View>
             <View style={styles.buttonsContainer}>
-              <View style={styles.button}>
-                <Button
-                  title="Reset"
-                  color={variables.secondaryColor}
-                  onPress={resetInputHandler}
-                />
-              </View>
-              <View style={styles.button}>
-                <Button
-                  title="Confirm"
-                  color={variables.primaryColor}
-                  onPress={validationHandler}
-                />
-              </View>
+              <SecondaryButton onPress={resetInputHandler}>
+                Reset
+              </SecondaryButton>
+              <PrimaryButton onPress={validationHandler}>Confirm</PrimaryButton>
             </View>
           </Card>
-          {isConfirmed && <NumberContainer selectedNumber={props.selectedNumber} startGame={props.setStartGame} />}
+          {isConfirmed && (
+            <NumberContainer
+              selectedNumber={props.selectedNumber}
+              startGame={props.setStartGame}
+            />
+          )}
         </View>
-
       </React.Fragment>
     </TouchableWithoutFeedback>
   );

@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 16,
     backgroundColor: variables.primaryColor,
-    borderRadius: 5,
+    borderRadius: 5
   },
   buttonText: {
     color: "#fff",
@@ -25,4 +25,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   }
 });
+
 export default PrimaryButton;
