@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Alert } from "react-native";
 import Card from "../components/ui/Card";
 import Number from "../components/ui/Number";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import GameOverScreen from "./GameOverScreen";
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -21,47 +22,63 @@ const GameScreen = props => {
     generateRandomBetween(1, 100, props.userChoice)
   );
 
+  const [rounds, setRounds] = useState(0);
+
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
 
   const nextGuessHandler = direction => {
-    if ((direction === 'lower' && currentGuess < props.userChoice) || 
-    (direction === 'greater' && currentGuess > props.userChoice)) {
-      Alert.alert('Don\'t lie', 'You gave incorrect hint', [{text: 'Sorry', style: 'cancel'}]);
+    if (
+      (direction === "lower" && currentGuess < props.userChoice) ||
+      (direction === "greater" && currentGuess > props.userChoice)
+    ) {
+      Alert.alert("Don't lie", "You gave incorrect hint", [
+        { text: "Sorry", style: "cancel" }
+      ]);
       return;
     }
 
-    if (direction === 'lower') {
+    if (direction === "lower") {
       currentHigh.current = currentGuess;
-    }
-    else {
+    } else {
       currentLow.current = currentGuess;
     }
-    const nextNumer = generateRandomBetween(currentLow.current, currentHigh.current, currentGuess);
+    const nextNumer = generateRandomBetween(
+      currentLow.current,
+      currentHigh.current,
+      currentGuess
+    );
     setCurrentGuess(nextNumer);
+    setRounds(currentRounds => currentRounds + 1);
   };
 
   return (
-    <View style={styles.container}>
-      <Card style={styles.card}>
-        <Text>Opponent's Guess</Text>
-        <Number>{currentGuess}</Number>
-        <View style={styles.buttonsContainer}>
-          <PrimaryButton
-            style={styles.button}
-            onPress={nextGuessHandler.bind(this, "lower")}
-          >
-            Lower
-          </PrimaryButton>
-          <PrimaryButton
-            style={styles.button}
-            onPress={nextGuessHandler.bind(this, "greater")}
-          >
-            Greater
-          </PrimaryButton>
+    <React.Fragment>
+      {props.userChoice !== currentGuess && (
+        <View style={styles.container}>
+          <Card style={styles.card}>
+            <Text>Opponent's Guess</Text>
+            <Number>{currentGuess}</Number>
+            <View style={styles.buttonsContainer}>
+              <PrimaryButton
+                style={styles.button}
+                onPress={nextGuessHandler.bind(this, "lower")}
+              >
+                Lower
+              </PrimaryButton>
+              <PrimaryButton
+                style={styles.button}
+                onPress={nextGuessHandler.bind(this, "greater")}
+              >
+                Greater
+              </PrimaryButton>
+            </View>
+          </Card>
         </View>
-      </Card>
-    </View>
+      )}
+
+      {props.userChoice === currentGuess && <GameOverScreen rounds={rounds} currentGuess={currentGuess} />}
+    </React.Fragment>
   );
 };
 
