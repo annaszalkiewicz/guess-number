@@ -16,7 +16,7 @@ const App = props => {
     <View style={styles.container}>
       <Header title="Guess a Number" />
       {!startGame && <StartGameScreen setStartGame={setStartGame} selectedNumber={selectedNumber} setSelectedNumber={setSelectedNumber} />}
-      {startGame && <GameScreen userChoice={selectedNumber} />}
+      {startGame && <GameScreen userChoice={selectedNumber} setStartGame={setStartGame} />}
     </View>
   );
 }

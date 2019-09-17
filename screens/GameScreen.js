@@ -77,7 +77,7 @@ const GameScreen = props => {
         </View>
       )}
 
-      {props.userChoice === currentGuess && <GameOverScreen rounds={rounds} currentGuess={currentGuess} />}
+      {props.userChoice === currentGuess && <GameOverScreen rounds={rounds} setRounds={setRounds} currentGuess={currentGuess} setStartGame={props.setStartGame} />}
     </React.Fragment>
   );
 };
