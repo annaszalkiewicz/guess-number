@@ -17,13 +17,14 @@ const styles = StyleSheet.create({
   button: {
     padding: 16,
     backgroundColor: variables.secondaryColor,
-    borderRadius: 5,
+    borderRadius: 5
   },
   buttonText: {
+    fontFamily: variables.ralewayBold,
+    fontSize: 16,
     color: "#fff",
     textTransform: "uppercase",
-    fontWeight: "bold",
-    textAlign: 'center'
+    textAlign: "center"
   }
 });
 export default SecondaryButton;

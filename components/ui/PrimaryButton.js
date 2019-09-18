@@ -20,10 +20,11 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   buttonText: {
+    fontFamily: variables.ralewayBold,
+    fontSize: 16,
     color: "#fff",
     textTransform: "uppercase",
-    fontWeight: "bold",
-    textAlign: 'center'
+    textAlign: "center"
   }
 });
 
