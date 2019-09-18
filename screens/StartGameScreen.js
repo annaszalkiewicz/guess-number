@@ -7,6 +7,8 @@ import {
   Keyboard,
   Alert
 } from "react-native";
+
+import variables from '../constants/variables';
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
 import NumberContainer from "../components/NumberContainer";
@@ -102,8 +104,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   title: {
+    fontFamily: variables.ralewayBold,
     fontSize: 18,
-    fontWeight: "bold"
   },
   card: {
     width: "100%",
