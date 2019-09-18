@@ -4,11 +4,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Card from "./ui/Card";
 import Number from "./ui/Number";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import BodyText from '../components/ui/BodyText';
 
 const NumberContainer = props => {
   return (
     <Card style={styles.container}>
-      <Text>You selected</Text>
+      <BodyText>You selected</BodyText>
       <Number>{props.selectedNumber}</Number>
       <PrimaryButton onPress={() => props.startGame(true)} style={styles.button}>
         Start Game

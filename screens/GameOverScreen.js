@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import BodyText from '../components/ui/BodyText'
 import StartGameScreen from "./StartGameScreen";
 
 const GameOverScreen = props => {
@@ -16,9 +17,9 @@ const GameOverScreen = props => {
     <React.Fragment>
       {!newGame && (
         <View style={styles.container}>
-          <Text>Game Over Screen</Text>
-          <Text>Rounds: {props.rounds}</Text>
-          <Text>Your number was {props.currentGuess}</Text>
+          <BodyText>Game Over Screen</BodyText>
+          <BodyText>Rounds: {props.rounds}</BodyText>
+          <BodyText>Your number was {props.currentGuess}</BodyText>
           <PrimaryButton onPress={configureNewGame}>
             Start new game
           </PrimaryButton>

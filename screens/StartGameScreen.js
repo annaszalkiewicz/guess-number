@@ -14,6 +14,7 @@ import Input from "../components/ui/Input";
 import NumberContainer from "../components/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import SecondaryButton from "../components/ui/SecondaryButton";
+import BodyText from '../components/ui/BodyText';
 
 const StartGameScreen = props => {
   const [inputValue, setInputValue] = useState("");
@@ -60,7 +61,7 @@ const StartGameScreen = props => {
         <View style={styles.container}>
           <Text style={styles.title}>Start new game</Text>
           <Card style={styles.card}>
-            <Text style={styles.text}>Select a number</Text>
+            <BodyText style={styles.text}>Select a number</BodyText>
             <View style={styles.inputContainer}>
               <Input
                 keyboardType="number-pad"
