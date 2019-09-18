@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TouchableWithoutFeedback,
   Keyboard,
   Alert
 } from "react-native";
 
-import variables from '../constants/variables';
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
-import NumberContainer from "../components/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import SecondaryButton from "../components/ui/SecondaryButton";
+import HeadingTwo from '../components/ui/HeadingTwo';
 import BodyText from '../components/ui/BodyText';
+import NumberContainer from "../components/NumberContainer";
 
 const StartGameScreen = props => {
   const [inputValue, setInputValue] = useState("");
@@ -59,7 +58,7 @@ const StartGameScreen = props => {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <React.Fragment>
         <View style={styles.container}>
-          <Text style={styles.title}>Start new game</Text>
+          <HeadingTwo>Start new game</HeadingTwo>
           <Card style={styles.card}>
             <BodyText style={styles.text}>Select a number</BodyText>
             <View style={styles.inputContainer}>
@@ -103,10 +102,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 30,
     alignItems: "center"
-  },
-  title: {
-    fontFamily: variables.ralewayBold,
-    fontSize: 18,
   },
   card: {
     width: "100%",
