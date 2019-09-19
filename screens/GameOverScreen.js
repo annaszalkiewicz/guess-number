@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import BodyText from "../components/ui/BodyText";
 import HeadingTwo from "../components/ui/HeadingTwo";
@@ -19,6 +19,12 @@ const GameOverScreen = props => {
       {!newGame && (
         <View style={styles.container}>
           <HeadingTwo>Game Over</HeadingTwo>
+          <View style={styles.imageContainer}>
+          <Image
+            source={{uri: 'https://images.pexels.com/photos/1314536/pexels-photo-1314536.jpeg'}}
+            style={styles.image}
+          />
+          </View>
           <BodyText>Rounds: {props.rounds}</BodyText>
           <BodyText>Your number was {props.currentGuess}</BodyText>
           <PrimaryButton onPress={configureNewGame}>
@@ -36,6 +42,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  imageContainer: {
+    width: 300,
+    height: 300,
+    borderRadius: 150,
+    borderColor: '#000',
+    borderWidth: 1,
+    overflow: 'hidden',
+    marginVertical: 30
+  },
+  image: {
+    width: '100%',
+    height: '100%'
   }
 });
 export default GameOverScreen;
