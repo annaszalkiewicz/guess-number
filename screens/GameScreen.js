@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
-import { View, Text, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Card from "../components/ui/Card";
 import Number from "../components/ui/Number";
 import PrimaryButton from "../components/ui/PrimaryButton";
-import BodyText from '../components/ui/BodyText';
+import BodyText from "../components/ui/BodyText";
 import GameOverScreen from "./GameOverScreen";
 
 const generateRandomBetween = (min, max, exclude) => {
@@ -65,20 +66,27 @@ const GameScreen = props => {
                 style={styles.button}
                 onPress={nextGuessHandler.bind(this, "lower")}
               >
-                Lower
+                <MaterialCommunityIcons name="minus" size={28} color="#fff" />
               </PrimaryButton>
               <PrimaryButton
                 style={styles.button}
                 onPress={nextGuessHandler.bind(this, "greater")}
               >
-                Greater
+                <MaterialCommunityIcons name="plus" size={28} color="#fff" />
               </PrimaryButton>
             </View>
           </Card>
         </View>
       )}
 
-      {props.userChoice === currentGuess && <GameOverScreen rounds={rounds} setRounds={setRounds} currentGuess={currentGuess} setStartGame={props.setStartGame} />}
+      {props.userChoice === currentGuess && (
+        <GameOverScreen
+          rounds={rounds}
+          setRounds={setRounds}
+          currentGuess={currentGuess}
+          setStartGame={props.setStartGame}
+        />
+      )}
     </React.Fragment>
   );
 };
