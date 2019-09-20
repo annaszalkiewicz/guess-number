@@ -7,6 +7,7 @@ import Number from "../components/ui/Number";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import BodyText from "../components/ui/BodyText";
 import GameOverScreen from "./GameOverScreen";
+import GuessesList from "../components/GuessesList";
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -24,7 +25,7 @@ const GameScreen = props => {
     generateRandomBetween(1, 100, props.userChoice)
   );
 
-  const [rounds, setRounds] = useState(0);
+  const [pastGuesses, setPastGuesses] = useState([]);
 
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
@@ -51,7 +52,7 @@ const GameScreen = props => {
       currentGuess
     );
     setCurrentGuess(nextNumer);
-    setRounds(currentRounds => currentRounds + 1);
+    setPastGuesses();
   };
 
   return (
@@ -76,6 +77,7 @@ const GameScreen = props => {
               </PrimaryButton>
             </View>
           </Card>
+          <GuessesList />
         </View>
       )}
 
