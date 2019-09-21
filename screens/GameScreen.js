@@ -53,8 +53,6 @@ const GameScreen = props => {
     );
     setCurrentGuess(nextNumber);
     setPastGuesses(prevGuesses => [nextNumber, ...prevGuesses]);
-    console.log(pastGuesses);
-    
   };
 
   return (

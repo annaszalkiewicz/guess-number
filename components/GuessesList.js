@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
+import BodyText from '../components/ui/BodyText'
 
 const GuessesList = props => {
   const { pastGuesses } = props;
@@ -8,8 +9,8 @@ const GuessesList = props => {
         {pastGuesses.map((guess, index) => {
           return (
             <View key={index} style={styles.listItem}>
-              <Text>#{pastGuesses.length - index}</Text>
-              <Text>{guess}</Text>
+              <BodyText>#{pastGuesses.length - index}</BodyText>
+              <BodyText>{guess}</BodyText>
             </View>
           );
         })}
