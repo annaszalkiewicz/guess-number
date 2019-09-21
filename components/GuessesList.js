@@ -1,11 +1,20 @@
 import React from 'react'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 
-const GuessesList = () => {
+const GuessesList = props => {
+
+  const { pastGuesses } = props;
   return (
     <View>
       <ScrollView>
-        <Text>Past guesses</Text>
+       {pastGuesses.map((guess, index) => {
+         return (
+           <View key={index}>
+             <Text>#{index}</Text>
+             <Text>{guess}</Text>
+           </View>
+         )
+       })}
       </ScrollView>
     </View>
   )
