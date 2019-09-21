@@ -21,11 +21,11 @@ const generateRandomBetween = (min, max, exclude) => {
 };
 
 const GameScreen = props => {
-  const [currentGuess, setCurrentGuess] = useState(
-    generateRandomBetween(1, 100, props.userChoice)
-  );
 
-  const [pastGuesses, setPastGuesses] = useState([]);
+  const initialGuess = generateRandomBetween(1, 100, props.userChoice);
+
+  const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  const [pastGuesses, setPastGuesses] = useState([initialGuess]);
 
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
@@ -44,15 +44,17 @@ const GameScreen = props => {
     if (direction === "lower") {
       currentHigh.current = currentGuess;
     } else {
-      currentLow.current = currentGuess;
+      currentLow.current = currentGuess + 1;
     }
-    const nextNumer = generateRandomBetween(
+    const nextNumber = generateRandomBetween(
       currentLow.current,
       currentHigh.current,
       currentGuess
     );
-    setCurrentGuess(nextNumer);
-    setPastGuesses();
+    setCurrentGuess(nextNumber);
+    setPastGuesses(prevGuesses => [nextNumber, ...prevGuesses]);
+    console.log(pastGuesses);
+    
   };
 
   return (
@@ -77,14 +79,14 @@ const GameScreen = props => {
               </PrimaryButton>
             </View>
           </Card>
-          <GuessesList />
+          <GuessesList pastGuesses={pastGuesses} />
         </View>
       )}
 
       {props.userChoice === currentGuess && (
         <GameOverScreen
-          rounds={rounds}
-          setRounds={setRounds}
+          rounds={pastGuesses.length}
+          setRounds={setPastGuesses}
           currentGuess={currentGuess}
           setStartGame={props.setStartGame}
         />

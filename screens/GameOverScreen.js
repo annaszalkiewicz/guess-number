@@ -9,7 +9,7 @@ const GameOverScreen = props => {
   const [newGame, setNewGame] = useState(false);
 
   const configureNewGame = () => {
-    props.setRounds(0);
+    props.setRounds([]);
     props.setStartGame(false);
     setNewGame(true);
   };
